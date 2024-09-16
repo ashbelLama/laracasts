@@ -21,6 +21,8 @@ COPY --chown=www-data:www-data . .
 # Copy composer from the Composer image
 COPY --from=composer:lts /usr/bin/composer /usr/bin/composer
 
+RUN composer install
+
 # Ensure proper directory structure for logs
 RUN mkdir -p /var/www/html/storage/logs && \
     touch /var/www/html/storage/logs/laravel.log
